@@ -13,9 +13,18 @@ for ltr in str:
         obj[ltr] = 1
     print(ltr)
 
+# first
 arr = [[item, obj[item]] for item in obj]
 arr.sort(key=lambda item: item[1], reverse=True)
-# [['e', 10], ['t', 9], ['i', 6], ['h', 5], ['s', 5], ['n', 5], ['g', 4], 
+# [['e', 10], ['t', 9], ['i', 6], ['h', 5], ['s', 5], ['n', 5], ['g', 4],
 # ['r', 4], ['l', 3], ['o', 3], ['a', 3], ['w', 2], ['v', 1], ['f', 1], ['d', 1], ['m', 1], ['p', 1]]
 print(arr)
+
+# second
+arr2 = sorted(obj.items(), key=lambda item: item[1], reverse=True)
+# [('e', 10), ('t', 9), ('i', 6), ('h', 5), ('s', 5), ('n', 5), ('g', 4),
+# ('r', 4), ('l', 3), ('o', 3), ('a', 3), ('w', 2), ('v', 1), ('f', 1), ('d', 1), ('m', 1), ('p', 1)]
+print(arr2)
+
+
 print(obj)
