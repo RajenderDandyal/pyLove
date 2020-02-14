@@ -164,3 +164,51 @@ print(xx)
 # for filter method
 yy = [item["price"] for item in proList if item["price"] > 100]
 print(yy)
+
+
+# $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+# $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$ dict $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+# $$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$
+
+point = {"x": 1, "y": 2}
+# same as point = dict(x=1, y=2)
+
+
+# getting smthng not there in dict
+# print(point["a"])  gives an error in python .. udefined in js
+# sol
+if "a" in proList:
+    print(point["a"])
+
+# or .. use.get method .. will not give error if key is not present.. here we can also provide default value .. if key is not present
+
+print(point.get("a", 3))
+
+
+keys = point.keys()
+values = point.values()
+items = point.items()
+x, y = point.items()
+# ['x', 'y'] [1, 2] [('x', 1), ('y', 2)]
+print(list(keys), list(values), list(items), x, y)
+
+for keys in point:
+    print(keys)  # prints x,y
+
+
+for key, value in point.items():
+    print(key, value)
+
+for values in point.values():
+    print(values)
+
+smthng = {}
+
+for x in range(8):
+    smthng[x] = x*4
+
+ # with dict comprehensions
+
+newSmthng = {x: x*5 for x in range(8)}
+
+print(newSmthng)
