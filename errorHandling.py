@@ -21,11 +21,39 @@ finally:
 
 x = -1
 
-if x < 0:
+if x > 0:
     raise Exception("Sorry, no numbers below zero")
 
 
 x = "hello"
 
 if not type(x) is int:
-    raise TypeError("Only integers are allowed")
+    print("")
+    #raise TypeError("Only integers are allowed")
+
+
+try:
+    age = int(input("Age:"))
+    xFactor = 10/age
+except ValueError as err:
+    print("Enter a valid age!!", err)
+except ZeroDivisionError:
+    print("Enter a valid age!!")
+
+
+try:
+    age = int(input("Age:"))
+    xFactor = 10/age
+except (ValueError, ZeroDivisionError, NameError, TypeError, SyntaxError):
+    print("Enter a valid age!!")
+
+
+# always close the resources that u open in try n finally
+
+try:
+    f = open("demofile.txt")
+    f.write("Lorum Ipsum")
+except:
+    print("Something went wrong when writing to the file")
+finally:
+    f.close()
