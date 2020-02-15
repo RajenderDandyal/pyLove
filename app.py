@@ -89,8 +89,17 @@ def incremnt(number, by=1):
 print(incremnt(number=4, by=99))
 
 
+def my_function(child3, child2, child1):
+    print("The youngest child is " + child3)
+
+
+# with keyword arguments order dosent matter
+my_function(child1="Emil", child2="Tobias", child3="Linus")
+
 # agruments n ...rest operator equivalent in python
 # *args ... returns a tuple
+
+
 def multiply(*nums):
     print(nums)
     ttl = 1
