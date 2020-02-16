@@ -30,7 +30,7 @@ x = "hello"
 if not type(x) is int:
     print("")
     #raise TypeError("Only integers are allowed")
-
+    # raise ValueError("Only int are allowed")
 
 try:
     age = int(input("Age:"))
@@ -57,3 +57,18 @@ except:
     print("Something went wrong when writing to the file")
 finally:
     f.close()
+
+
+# with statement
+# is used for objects which have __exit__ __enter__ magical method
+# now we don't need the finally block to close the files
+
+try:
+    with open("app.py") as app, open("dataStrs.py") as dataStr:
+        dataStr.readlines()
+        app.read()
+        # app.__enter__
+        # app.__exit__
+
+except:
+    print("Smthng went wrong")
