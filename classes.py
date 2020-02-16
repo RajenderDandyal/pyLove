@@ -17,11 +17,16 @@ class Point:
     def draw(self):
         print(f"Point: ({self.x}, {self.y})")
 
+    @classmethod
+    def zero(cls):
+        return cls(0, 0)
+
 
 # changing class level attributes
 Point.default_color = "lightBlue"
 
 # self refer to the current object and its properties
 point = Point(2, 3)
-
+point2 = Point.zero()
+point2.draw()
 point.draw()
