@@ -75,3 +75,118 @@ print(point <= point2)
 print(point < point2)
 print(point > point2)
 print(point + point2)
+
+
+# building custom dict .. with magic methods
+
+class MyDict:
+    def __init__(self):
+        self.myDict = {}
+        self.__myDict2 = {}
+
+    def add(self, tag):
+        self.myDict[tag.lower()] = self.myDict.get(tag.lower(), 0) + 1
+
+    # magic methods
+    def __getitem__(self, tag):
+        return self.myDict.get(tag.lower())
+
+    def __setitem__(self, key, value):
+        self.myDict[key.lower()] = value
+
+    def __len__(self):
+        return len(self.myDict)
+
+    def __iter__(self):
+        return iter(self.myDict)
+
+
+dict = MyDict()
+dict.add("PYTHON")
+dict.add("python")
+dict.add("python")
+dict.add("python")
+dict["python"] = 3
+print(dict["python"])  # 4
+print(dict.myDict)  # {'python': 4}
+dict["python"] = 3
+print(dict["python"])  # 3
+print(dict.myDict)  # {'python': 3}
+
+print(dict.myDict)  # is not private
+# is private.... AttributeError: 'MyDict' object has no attribute 'myDict2'
+# print(dict.myDict2)
+# print(dict.__myDict2)  # is private
+
+# but python dont have private and public keywords
+# __prorerty is just a convention to prevent accidental access to private attributes/properties
+# we can still access the private properties .. as all properties are stored in __dict__
+print(dict.__dict__)  # {'myDict': {'python': 3}, '_MyDict__myDict2': {}}
+# so we can still access the private property by
+print(dict._MyDict__myDict2)  # {}
+
+
+##############################################
+########## getter n setter properties#########
+##############################################
+
+# simple way .... not using python features to full potential
+class GetterSetter:
+    def __init__(self, price):
+        self.setPrice(price)
+
+    def getPrice(self):
+        return self.__price
+
+    def setPrice(self, price):
+        if price < 0:
+            raise ValueError("Price cannot be negative")
+        self.__price = price
+
+
+price = GetterSetter(2)
+print(price.getPrice())
+price.setPrice(10)
+print(price.getPrice())
+
+
+# property built-in method .. to set and get a attribute
+class Product:
+    def __init__(self, price):
+        self.setPrice(price)
+
+    def getPrice(self):
+        return self.__price
+
+    def setPrice(self, price):
+        if price < 0:
+            raise ValueError("Price cannot be negative")
+        self.__price = price
+    # now we can directly use the price property .. to get and set the price
+    price = property(getPrice, setPrice)
+
+
+product = Product(20)
+print(product.price)
+product.price = 23
+print(product.price)
+
+
+# decorator property .... for getter n setter of price
+class Product2:
+    def __init__(self, value):
+        self.price = value
+
+    @property
+    def price(self):
+        return self.__price
+
+    @price.setter
+    def price(self, value):
+        self.__price = value
+
+
+product2 = Product2(20)
+print(product2.price)
+product2.price = 23
+print(product2.price)
