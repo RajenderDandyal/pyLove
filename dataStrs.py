@@ -1,5 +1,8 @@
 # list
 
+from copy import deepcopy
+
+
 letters = ["a", "b", "c", "d"]
 print(letters)
 
@@ -212,3 +215,15 @@ for x in range(8):
 newSmthng = {x: x*5 for x in range(8)}
 
 print(newSmthng)
+
+# sgallow copy .. deep copy
+# from copy import deepcopy
+
+# deep copy
+
+lst1 = [{"a": {"c": {"f": "e"}}}]
+
+list2 = deepcopy(lst1)
+list3 = lst1.copy()
+print(list3)
+print(list2)
