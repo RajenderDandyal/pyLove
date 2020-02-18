@@ -127,7 +127,7 @@ print(dict._MyDict__myDict2)  # {}
 
 
 ##############################################
-########## getter n setter properties#########
+########## getter n setter properties #########
 ##############################################
 
 # simple way .... not using python features to full potential
@@ -190,3 +190,81 @@ product2 = Product2(20)
 print(product2.price)
 product2.price = 23
 print(product2.price)
+
+
+###################################################
+################# inheritance #####################
+###################################################
+
+class Animal:
+    def __init__(self):
+        print("Animal class")
+
+    def eats(self):
+        print("We eat food")
+
+# Animal: parent, base
+# Mamal: child, subClass
+
+
+class Mammal(Animal):
+
+    def __init__(self):
+        super().__init__()  # init the parent constructor first
+        print("Mamal class")
+
+    def walks(self):
+        print("We walk")
+
+
+class Fish(Animal):
+    def swim(self):
+        print("We swim")
+
+
+gellyFish = Fish()
+gellyFish.eats()
+gellyFish.swim()
+
+elephant = Mammal()
+elephant.eats()
+elephant.walks()
+print(isinstance(elephant, Animal))  # true
+print(isinstance(elephant, Mammal))  # true
+# true ... parent class always inherits from .. built-in object class
+print(isinstance(Animal, object))
+print(issubclass(Mammal, Animal))  # true
+
+
+# multiple inheritance
+
+class Person:
+    def __init__(self):
+        print("I am person")
+
+    def eats(self):
+        print("I eats")
+
+
+class Employee:
+    def __init__(self):
+        print("I am Employee")
+
+    def works(self):
+        print("I work")
+
+
+class Manager(Employee, Person):
+    def __init__(self):
+        super().__init__()
+        print("I am Manager")
+
+    def management(self):
+        print("I manage workers")
+
+
+manager = Manager()
+
+manager.eats()
+manager.works()
+manager.management()
