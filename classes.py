@@ -53,6 +53,7 @@ class Point:
         return self.x >= other.x and self.y >= other.y
 
     # numeric magic method
+    # ex of OPERATOR OVERLOADING also
     def __add__(self, other):
         return (self.x + other.x, self.y + other.y)
 
@@ -503,3 +504,28 @@ func(obj_usa)
 # Washington, D.C. is the capital of USA.
 # English is the primary language of USA.
 # USA is a developed country.
+
+
+############################################
+######## operator overloading ##############
+############################################
+
+class Student:
+    def __init__(self, marks1, marks2):
+        self.m1 = marks1
+        self.m2 = marks2
+
+    def __add__(self, other):
+        m1 = self.m1 + other.m1
+        m2 = self.m2 + other.m2
+        s3 = Student(m1, m2)
+        return s3
+
+    def log(self, obj):
+        print({"m1": obj.m1, "m2": obj.m2})
+
+
+s1 = Student(2, 3)
+s2 = Student(3, 5)
+s3 = s1+s2  # now we can add the 2 objects .. bcoz of method overloading
+s3.log(s3)
