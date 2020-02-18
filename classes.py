@@ -2,6 +2,7 @@
 # every method in class should have atleast one parameter ... self
 
 
+import sys
 from abc import ABC, abstractmethod
 
 
@@ -514,6 +515,7 @@ class Student:
     def __init__(self, marks1, marks2):
         self.m1 = marks1
         self.m2 = marks2
+        print("============", self)
 
     def __add__(self, other):
         m1 = self.m1 + other.m1
@@ -529,3 +531,29 @@ s1 = Student(2, 3)
 s2 = Student(3, 5)
 s3 = s1+s2  # now we can add the 2 objects .. bcoz of method overloading
 s3.log(s3)
+
+
+############################################################
+############## extending built-in classes ##################
+############################################################
+
+class Text(str):
+
+    def duplicate(self):
+        return self + self
+
+
+class MyList(list):
+
+    def listLen(self):
+        print(self)
+        return len(self)
+
+
+txt = Text("Rajender")
+print(txt.duplicate())
+lst = MyList([1, 2, 3, 4, 5, 6, 7, 8, 9])
+print(lst.listLen())
+
+
+print(sys.path)
