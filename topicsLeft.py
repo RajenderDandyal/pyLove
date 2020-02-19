@@ -15,8 +15,20 @@
 
 # pipenv to activate the current venv
 # pipenv shell
-# exit
+# exit ... to exit the current venv
 
 # install new packages
 # pipenv install  .... same as ... npm install
-# pip install request .... same as .... npm install request
+# pipenv install request .... same as .... npm install request
+
+
+# check global packages installed
+# pip3 list
+
+
+# creating local venv
+# python3 -m venv FolderName/env
+# source env/bin/activate  .... to activate the current venv ..created with above line
+# deactivate ... to exit the current venv
+# to inatall the package in current venv
+# pip3 install request==2.9.*
