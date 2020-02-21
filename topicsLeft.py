@@ -32,3 +32,13 @@
 # deactivate ... to exit the current venv
 # to inatall the package in current venv
 # pip3 install request==2.9.*
+
+
+
+# django 
+# django-admin startproject mysite .
+# python3 manage.py runserver
+# python3 manage.py startapp polls
+# django-admin startapp mysite
+# python3 manage.py migrate
+# python3 manage.py makemigrations
