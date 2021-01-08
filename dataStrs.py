@@ -61,6 +61,11 @@ for num in enumerate(array):
 (8, 7)
 (9, 6)
 
+# equivalent to jf forEach loop
+for index, item in enumerate(array):
+    print(index, item)
+    
+    
 # add to list
 array.append(9)
 array.insert(1, 23)
